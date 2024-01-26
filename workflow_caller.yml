@@ -1,0 +1,17 @@
+name: Workflow Caller
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  trigger_workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Repo A Workflow
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          # token: ${{ secrets.REPO_A_PAT }}
+          repository: repo-A
+          event-type: trigger-ci
